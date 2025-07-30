@@ -8,6 +8,8 @@ class Project(models.Model):
     content = models.TextField()
     active = models.BooleanField(default=True)
     picture = models.ImageField(upload_to="projects/")
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='projects')
+    tags = models.ManyToManyField('Tag', related_name='projects')
 
     def __str__(self):
         return self.title
